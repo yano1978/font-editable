@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+.text-edit {
+  overflow: visible !important;
+}
+.text-edit:hover {
+  background-color: transparent !important;
+}
