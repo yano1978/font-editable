@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { EditText } from 'react-edit-text';
+import { EditTextarea } from 'react-edit-text';
+import ButtonGroup from './components/ButtonGroup';
+import SketchExample from './components/SketchExample';
+// import { ChromePicker } from 'react-color';
 import 'react-edit-text/dist/index.css';
-function App() {
+
+export const App = () => {
   const [size, setSize] = useState();
   const [select, setSelect] = useState();
   const [height, setHeight] = useState();
   const [space, setSpacing] = useState();
+  const [position, setPosition] = useState();
+  // const [color, setColor] = useState();
 
   const fontsizeChange = (e) => {
     // console.log('setting font size', e.target.value);
@@ -19,10 +25,22 @@ function App() {
     // console.log('setting font height', e.target.value);
     setHeight(e.target.value);
   };
+
   const selectSpacingChange = (e) => {
     // console.log('setting font spacing', e.target.value);
     setSpacing(e.target.value);
   };
+
+  // const colorChange = (e) => {
+  //   console.log('setting font color', e.hex);
+  //   setColor(e.hex);
+  // };
+
+  const fontPositioning = (e) => {
+    console.log('setting font position', e.target.id);
+    setPosition(e.target.name);
+  };
+
   return (
     <>
       <div className="flex flex-row w-full mt-10 mx-2">
@@ -42,6 +60,7 @@ function App() {
           <input
             onChange={selectHeightChange}
             type="range"
+            min="1"
             max="100"
             className="range"
           />
@@ -78,23 +97,40 @@ function App() {
         </div>
       </div>
       <div className="flex flex-row w-full mt-10 mx-2">
+        <div className="grid flex-grow h-20 place-items-center color-wrapper">
+          <span>Color picker</span>
+          {/* <ChromePicker color={color} onChangeComplete={colorChange} /> */}
+          <SketchExample />
+        </div>
+        <div className="divider divider-vertical"></div>
         <div className="grid flex-grow h-20 place-items-center">
-          <EditText
-            name="textbox"
+          <span>Leading</span>
+          <ButtonGroup
+            buttons={['justify', 'left', 'right', 'center']}
+            setFontPositionAfterClick={fontPositioning}
+          />
+        </div>
+      </div>
+      <div className="flex flex-row w-full mt-10 mx-2">
+        <div className="grid flex-grow h-20 place-items-center">
+          <EditTextarea
+            className="text-edit outline-0 bg-base-100 text-center text-4xl"
+            name="description"
+            defaultValue="Some text here"
+            placeholder="Some text here"
             style={{
               fontSize: size,
               fontWeight: select,
-              height: height,
+              lineHeight: height,
               letterSpacing: space,
+              textAlign: position,
+              // color: color,
             }}
-            className="text-edit outline-0 bg-base-100 text-center text-4xl"
-            defaultValue="Some text here"
-            placeholder="Some text here"
           />
         </div>
       </div>
     </>
   );
-}
+};
 
 export default App;

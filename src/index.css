@@ -8,7 +8,15 @@ body {
 }
 .text-edit {
   overflow: visible !important;
+  min-height: 300px;
 }
 .text-edit:hover {
   background-color: transparent !important;
+}
+.color-wrapper {
+  position: relative;
+}
+.chrome-picker {
+  position: absolute;
+  bottom: 0.1rem;
 }
