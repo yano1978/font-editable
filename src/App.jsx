@@ -105,7 +105,7 @@ export const App = () => {
         </div>
         <div className="divider divider-vertical"></div>
         <div className="grid flex-grow h-20 place-items-left">
-          <span>Leading</span>
+          <span>Text position</span>
           <ButtonGroup
             buttons={['justify', 'left', 'right', 'center']}
             setFontPositionAfterClick={fontPositioning}
