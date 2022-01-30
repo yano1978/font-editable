@@ -6,6 +6,9 @@ body {
   overflow: hidden;
   margin: 0;
 }
+hr {
+  margin-top: 250px;
+}
 .text-edit {
   overflow: visible !important;
   min-height: 300px;
@@ -15,8 +18,14 @@ body {
 }
 .color-wrapper {
   position: relative;
+  top: 0;
 }
 .chrome-picker {
   position: absolute;
-  bottom: 0.1rem;
+  top: 35px;
+}
+.sketch-picker {
+  position: relative;
+  bottom: 305px;
+  left: 45px;
 }

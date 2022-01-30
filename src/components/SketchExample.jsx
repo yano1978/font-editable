@@ -3,15 +3,19 @@ import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
 
 export default class SketchExample extends Component {
-  state = {
-    displayColorPicker: false,
-    color: {
-      r: '245',
-      g: '112',
-      b: '19',
-      a: '1',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayColorPicker: false,
+      color: {
+        r: '245',
+        g: '112',
+        b: '19',
+        a: '1',
+      },
+      isDisplayed: true,
+    };
+  }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker });
@@ -22,7 +26,6 @@ export default class SketchExample extends Component {
   };
 
   handleChange = (color) => {
-    console.log(color.hex);
     this.setState({ color: color.rgb });
   };
 

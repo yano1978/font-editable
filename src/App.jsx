@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { EditTextarea } from 'react-edit-text';
 import ButtonGroup from './components/ButtonGroup';
 import SketchExample from './components/SketchExample';
-// import { ChromePicker } from 'react-color';
+import { ChromePicker } from 'react-color';
 import 'react-edit-text/dist/index.css';
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
   const [height, setHeight] = useState();
   const [space, setSpacing] = useState();
   const [position, setPosition] = useState();
-  // const [color, setColor] = useState();
+  const [color, setColor] = useState();
 
   const fontsizeChange = (e) => {
     // console.log('setting font size', e.target.value);
@@ -31,10 +31,10 @@ export const App = () => {
     setSpacing(e.target.value);
   };
 
-  // const colorChange = (e) => {
-  //   console.log('setting font color', e.hex);
-  //   setColor(e.hex);
-  // };
+  const colorChange = (e) => {
+    console.log('setting font color', e.hex);
+    setColor(e.hex);
+  };
 
   const fontPositioning = (e) => {
     console.log('setting font position', e.target.id);
@@ -96,14 +96,15 @@ export const App = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row w-full mt-10 mx-2">
-        <div className="grid flex-grow h-20 place-items-center color-wrapper">
+      <div className="flex flex-row w-full mt-10 mx-10">
+        <div className="grid flex-grow h-20 place-items-left color-wrapper">
           <span>Color picker</span>
-          {/* <ChromePicker color={color} onChangeComplete={colorChange} /> */}
-          <SketchExample />
+
+          <ChromePicker color={color} onChangeComplete={colorChange} />
+          {/* <SketchExample /> */}
         </div>
         <div className="divider divider-vertical"></div>
-        <div className="grid flex-grow h-20 place-items-center">
+        <div className="grid flex-grow h-20 place-items-left">
           <span>Leading</span>
           <ButtonGroup
             buttons={['justify', 'left', 'right', 'center']}
@@ -111,6 +112,7 @@ export const App = () => {
           />
         </div>
       </div>
+      <hr />
       <div className="flex flex-row w-full mt-10 mx-2">
         <div className="grid flex-grow h-20 place-items-center">
           <EditTextarea
@@ -124,7 +126,7 @@ export const App = () => {
               lineHeight: height,
               letterSpacing: space,
               textAlign: position,
-              // color: color,
+              color: color,
             }}
           />
         </div>
