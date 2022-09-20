@@ -15,7 +15,7 @@ export const App = () => {
 
   const fontsizeChange = (e) => {
     // console.log('setting font size', e.target.value);
-    setSize(e.target.value);
+    setSize(parseInt(e.target.value));
   };
   const selectWeightChange = (e) => {
     // console.log('setting select', e.target.value);
@@ -47,7 +47,7 @@ export const App = () => {
         <div className="grid flex-grow h-20 place-items-center">
           <span>Text size</span>
           <input
-            onMouseUp={fontsizeChange}
+            onChange={fontsizeChange}
             type="range"
             min="10"
             max="100"
